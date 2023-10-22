@@ -1,5 +1,6 @@
 package org.acme
 
+import kotlinx.coroutines.delay
 import org.acme.dto.BalanceDTO
 import java.math.BigDecimal
 import javax.ws.rs.GET
@@ -15,6 +16,7 @@ class BalanceResource {
     @Path("/account/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     suspend fun getBalance(@PathParam("id") id: Long) : BalanceDTO {
+        delay(200)
         return BalanceDTO(1L, id, BigDecimal.valueOf(50 + id))
 
     }
